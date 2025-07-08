@@ -17,6 +17,8 @@ import EscapePrison from './games/EscapePrison';
 import StickmanFighter from './games/StickmanFighter';
 import StickmanRacer from './games/StickmanRacer';
 import SnakesLadders from './games/SnakesLadders';
+import SeaSquares from './games/SeaSquares';
+import QuizKnows from './games/QuizKnows';
 import WordWeaver from './games/WordWeaver';
 import Wolverine from './games/Wolverine';
 import IdleGameEngine from './components/IdleGameEngine';
@@ -100,7 +102,6 @@ function App() {
     { name: "Big Fish", description: "Eat to grow, become the biggest fish in the ocean to win!", color: "#4169e1", icon: "🐟", rules: "Use arrow keys or WASD to swim. Eat fish smaller than you to grow. Avoid larger fish that can eat you. The goal is to become the biggest fish in the ocean. Watch out for sharks!" },
     { name: "Escape Prison", description: "A classic choice-based adventure game with multiple endings.", color: "#696969", icon: "🔓", rules: "Make strategic choices to escape from prison. Each decision affects your path and determines your ending. Choose wisely between stealth, force, or cunning to achieve freedom." },
     { name: "Rock Paper Scissors", description: "Classic hand game! Best of 3 rounds wins.", color: "#00ced1", icon: "✂️", rules: "Choose rock, paper, or scissors. Rock beats scissors, scissors beats paper, paper beats rock. Best of 3 rounds wins the match. Quick reflexes and psychology matter!" },
-    { name: "Flight Risk Rewards", description: "Fly, collect multipliers, avoid hazards & cash out!", color: "#87ceeb", icon: "✈️", rules: "Pilot your aircraft through dangerous skies. Collect multiplier bonuses while avoiding obstacles. Cash out at the right time to maximize your rewards before crashing." },
     { name: "Get On Top", description: "Physics duel! 2 vs 2 wrestling match with crazy physics.", color: "#ffa500", icon: "🤼", rules: "Use physics-based controls to wrestle your opponent. Push, pull, and throw to get your opponent's head to touch the ground. First team to score wins the match." },
     { name: "Hangman", description: "Classic word guessing! You can bet the creator or...", color: "#9370db", icon: "🎯", rules: "Guess the hidden word by selecting letters. Each wrong guess adds a part to the hangman. Guess the word before the drawing is complete to win." },
     { name: "Header Hustle", description: "1v1 soccer heads with power-ups & betting. First to 5!", color: "#32cd32", icon: "⚽", rules: "Control your soccer player's head to score goals. Use power-ups strategically and jump to head the ball into the opponent's goal. First player to score 5 goals wins." },
@@ -210,6 +211,12 @@ function App() {
         break;
       case 'Snakes n Ladders - Gamble':
         setCurrentGame('SnakesLadders');
+        break;
+      case 'Sea Squares':
+        setCurrentGame('SeaSquares');
+        break;
+      case 'QuizKnows':
+        setCurrentGame('QuizKnows');
         break;
       case 'WordWeaver':
         setCurrentGame('WordWeaver');
@@ -627,6 +634,8 @@ function App() {
       {currentGame === 'StickmanFighter' && <StickmanFighter onClose={() => setCurrentGame(null)} />}
       {currentGame === 'StickmanRacer' && <StickmanRacer onClose={() => setCurrentGame(null)} />}
       {currentGame === 'SnakesLadders' && <SnakesLadders onClose={() => setCurrentGame(null)} />}
+      {currentGame === 'SeaSquares' && <SeaSquares onClose={() => setCurrentGame(null)} />}
+      {currentGame === 'QuizKnows' && <QuizKnows onClose={() => setCurrentGame(null)} />}
       {currentGame === 'WordWeaver' && <WordWeaver onClose={() => setCurrentGame(null)} />}
       {currentGame === 'Wolverine' && <Wolverine onClose={() => setCurrentGame(null)} />}
       
