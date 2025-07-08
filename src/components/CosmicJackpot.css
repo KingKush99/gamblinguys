@@ -1,0 +1,493 @@
+.cosmic-jackpot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  overflow-y: auto;
+}
+
+.jackpot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #ffd700;
+}
+
+.jackpot-info h3 {
+  margin: 0;
+  font-size: 24px;
+  color: #ffd700;
+}
+
+.balance {
+  font-size: 16px;
+  color: #00ff88;
+  margin-top: 5px;
+}
+
+.close-jackpot-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-jackpot-btn:hover {
+  background: #ff3742;
+  transform: scale(1.1);
+}
+
+.jackpot-container {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.jackpot-display {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.jackpot-amount {
+  margin-bottom: 30px;
+}
+
+.jackpot-label {
+  font-size: 18px;
+  color: #ffd700;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.jackpot-value {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  margin-bottom: 10px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+  to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
+}
+
+.jackpot-subtitle {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.cosmic-visual {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.cosmic-orb {
+  font-size: 80px;
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.cosmic-orb.spinning {
+  animation: spin 1s linear infinite, float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cosmic-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  font-size: 20px;
+  animation: particle-float 4s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  top: 30%;
+  right: 20%;
+  animation-delay: 1s;
+}
+
+.particle:nth-child(3) {
+  bottom: 30%;
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(4) {
+  bottom: 20%;
+  right: 30%;
+  animation-delay: 3s;
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+}
+
+.odds-display {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.odds-display p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.betting-controls {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #ffd700;
+  width: 100%;
+  max-width: 500px;
+}
+
+.bet-input-section {
+  margin-bottom: 20px;
+}
+
+.bet-input-section label {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.bet-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.bet-input-container button {
+  background: #ffd700;
+  color: #1a1a2e;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.bet-input-container button:hover:not(:disabled) {
+  background: #ffed4e;
+  transform: scale(1.05);
+}
+
+.bet-input-container button:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.bet-input-container input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ffd700;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  font-size: 16px;
+}
+
+.quick-bet-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.quick-bet-buttons button {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quick-bet-buttons button:hover {
+  background: #ffd700;
+  color: #1a1a2e;
+}
+
+.spin-button {
+  width: 100%;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #1a1a2e;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.spin-button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.spin-button:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.spinning-interface {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 15px;
+  border: 2px solid #ffd700;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.spinning-message h4 {
+  color: #ffd700;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.cosmic-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 215, 0, 0.3);
+  border-top: 4px solid #ffd700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+.result-interface {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 15px;
+  border: 2px solid #ffd700;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.result-content h3 {
+  color: #ffd700;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.jackpot-win {
+  color: #00ff88;
+}
+
+.win-amount {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.win-celebration {
+  font-size: 30px;
+  margin: 15px 0;
+}
+
+.celebration-emoji {
+  display: inline-block;
+  animation: bounce 1s ease-in-out infinite;
+  margin: 0 5px;
+}
+
+.celebration-emoji:nth-child(2) { animation-delay: 0.2s; }
+.celebration-emoji:nth-child(3) { animation-delay: 0.4s; }
+.celebration-emoji:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.jackpot-loss {
+  color: #ff6b6b;
+}
+
+.loss-amount {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.play-again-btn, .exit-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-again-btn {
+  background: #ffd700;
+  color: #1a1a2e;
+}
+
+.play-again-btn:hover {
+  background: #ffed4e;
+  transform: scale(1.05);
+}
+
+.exit-btn {
+  background: #ff4757;
+  color: white;
+}
+
+.exit-btn:hover {
+  background: #ff3742;
+  transform: scale(1.05);
+}
+
+.recent-winners {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ffd700;
+  width: 100%;
+  max-width: 500px;
+}
+
+.recent-winners h4 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.winners-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.winner-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+}
+
+.winner-name {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.winner-amount {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.winner-time {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.jackpot-footer {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-top: 2px solid #ffd700;
+  text-align: center;
+}
+
+.jackpot-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.jackpot-stats span {
+  color: #ccc;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .jackpot-value {
+    font-size: 36px;
+  }
+  
+  .cosmic-orb {
+    font-size: 60px;
+  }
+  
+  .betting-controls, .spinning-interface, .result-interface {
+    padding: 20px;
+  }
+  
+  .jackpot-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+

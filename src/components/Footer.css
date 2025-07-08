@@ -1,0 +1,330 @@
+.footer {
+  width: 100vw;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 60px 0 40px 0;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    #4ecdc4 0%, 
+    #44a08d 25%, 
+    #093637 50%, 
+    #44a08d 75%, 
+    #4ecdc4 100%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Odometer Section */
+.odometer-section {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.odometer-group {
+  margin-bottom: 40px;
+}
+
+.odometer-group:last-child {
+  margin-bottom: 0;
+}
+
+.odometer-title {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.odometer {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin: 0 auto;
+  max-width: fit-content;
+}
+
+.odometer-digit {
+  background: #000000;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  width: 45px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.odometer-digit:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.digit-display {
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: #00ff00;
+  text-shadow: 
+    0 0 5px #00ff00,
+    0 0 10px #00ff00,
+    0 0 15px #00ff00;
+  animation: digitGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes digitGlow {
+  from { 
+    text-shadow: 
+      0 0 5px #00ff00,
+      0 0 10px #00ff00,
+      0 0 15px #00ff00;
+  }
+  to { 
+    text-shadow: 
+      0 0 8px #00ff00,
+      0 0 16px #00ff00,
+      0 0 24px #00ff00;
+  }
+}
+
+/* Add a subtle reflection effect */
+.odometer-digit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  border-radius: 6px 6px 0 0;
+  pointer-events: none;
+}
+
+/* Footer Links */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.footer-column {
+  text-align: left;
+}
+
+.footer-column-title {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Color-coded column titles */
+.footer-column-title.accessibility {
+  color: #4ecdc4;
+}
+
+.footer-column-title.company {
+  color: #ff8c42;
+}
+
+.footer-column-title.competitions {
+  color: #a855f7;
+}
+
+.footer-column-title.legal {
+  color: #22c55e;
+}
+
+.footer-column-title.support {
+  color: #ef4444;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 12px;
+}
+
+.footer-list a {
+  color: #cccccc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+}
+
+.footer-list a:hover {
+  color: #ffffff;
+  padding-left: 8px;
+  transform: translateX(4px);
+}
+
+.footer-list a::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.footer-list a:hover::before {
+  width: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .footer-links {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 30px 0;
+  }
+  
+  .footer-content {
+    padding: 0 15px;
+  }
+  
+  .odometer-section {
+    margin-bottom: 40px;
+    padding: 30px 15px;
+  }
+  
+  .odometer-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .odometer-digit {
+    width: 35px;
+    height: 50px;
+  }
+  
+  .digit-display {
+    font-size: 22px;
+  }
+  
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  .footer-column-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-list a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .odometer {
+    gap: 2px;
+  }
+  
+  .odometer-digit {
+    width: 30px;
+    height: 45px;
+  }
+  
+  .digit-display {
+    font-size: 18px;
+  }
+  
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .footer-column {
+    text-align: center;
+  }
+}
+
+/* Animation for number changes */
+.odometer-digit.changing {
+  animation: digitFlip 0.6s ease-in-out;
+}
+
+@keyframes digitFlip {
+  0% { transform: rotateX(0deg); }
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+/* Subtle background pattern */
+.footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 140, 66, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
+
