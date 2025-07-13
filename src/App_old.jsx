@@ -29,6 +29,7 @@ import IdleGameEngine from './components/IdleGameEngine';
 import LobbySystem from './components/LobbySystem';
 
 function App() {
+  const [currentWeeklyGame, setCurrentWeeklyGame] = useState(0);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [showGameRules, setShowGameRules] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
@@ -76,81 +77,55 @@ function App() {
     { name: "Snowball Syndicate", description: "Winter warfare strategy", color: "#87ceeb", icon: "❄️", realEvent: "Peak Winter" }, // Week 3
     { name: "Groundhog Day Predictions", description: "Weather forecasting empire", color: "#8b4513", icon: "🐹", realEvent: "Groundhog Day" }, // Week 4
     { name: "Super Bowl Spectacle", description: "Football championship management", color: "#ff4500", icon: "🏈", realEvent: "Super Bowl Week" }, // Week 5
-    { name: "Pet Empire: Valentine Edition", description: "Romantic pet breeding empire", color: "#ff69b4", icon: "💕", realEvent: "Valentine's Week" }, // Week 6
-    { name: "Espresso Wars", description: "Coffee shop competition", color: "#8b4513", icon: "☕", realEvent: "Winter X Games" }, // Week 7
-    { name: "Winter Carnival Chaos", description: "Ice festival management", color: "#4169e1", icon: "🎪", realEvent: "Winter Festivals" }, // Week 8
-    { name: "Presidents Day Politics", description: "Political campaign simulation", color: "#dc143c", icon: "🇺🇸", realEvent: "Presidents Day" }, // Week 9
-    { name: "March Madness: Bracket Brawl", description: "Basketball tournament predictions", color: "#ff4500", icon: "🏀", realEvent: "March Madness Begins" }, // Week 10
-    { name: "Spring Training Stadium", description: "Baseball season preparation", color: "#32cd32", icon: "⚾", realEvent: "Spring Training" }, // Week 11
-    { name: "St. Patrick's Pub Empire", description: "Irish pub management", color: "#228b22", icon: "🍀", realEvent: "St. Patrick's Day" }, // Week 12
-    { name: "Bunny Run: Easter Sprint", description: "Easter bunny endless runner", color: "#ffb6c1", icon: "🐰", realEvent: "Easter Preparation" }, // Week 13
-    { name: "Underwater Empire", description: "Aquatic civilization building", color: "#4169e1", icon: "🌊", realEvent: "Tsunami Awareness Month" }, // Week 14
-    { name: "Masters Golf Tournament", description: "Professional golf management", color: "#228b22", icon: "⛳", realEvent: "Masters Tournament" }, // Week 15
-    { name: "Tax Season Survival", description: "Accounting firm management", color: "#696969", icon: "📊", realEvent: "Tax Deadline Week" }, // Week 16
-    { name: "Spring Builders Fest", description: "Seasonal building competition", color: "#90ee90", icon: "🏗️", realEvent: "Spring Construction" }, // Week 17
-    { name: "Earth Day Eco Empire", description: "Environmental conservation game", color: "#32cd32", icon: "🌍", realEvent: "Earth Day" }, // Week 18
-    { name: "Derby Day Racing", description: "Horse racing championship", color: "#8b4513", icon: "🐎", realEvent: "Kentucky Derby" }, // Week 19
-    { name: "Mother's Day Marketplace", description: "Gift shop management", color: "#ff69b4", icon: "💐", realEvent: "Mother's Day" }, // Week 20
-    { name: "Indy 500 Racing Empire", description: "Professional racing management", color: "#ff4500", icon: "🏎️", realEvent: "Indianapolis 500" }, // Week 21
-    { name: "Memorial Day BBQ Bash", description: "Summer cookout catering", color: "#ff6347", icon: "🍖", realEvent: "Memorial Day" }, // Week 22
-    { name: "Beach Blitz", description: "Summer beach sports tournament", color: "#f0e68c", icon: "🏖️", realEvent: "Beach Season Begins" }, // Week 23
-    { name: "Summer Sports Rush", description: "Olympic summer sports collection", color: "#ffa500", icon: "🏅", realEvent: "Summer Sports Season" }, // Week 24
-    { name: "Father's Day Workshop", description: "Tool and hardware empire", color: "#4682b4", icon: "🔧", realEvent: "Father's Day" }, // Week 25
-    { name: "Graduation Ceremony Central", description: "Education event management", color: "#9932cc", icon: "🎓", realEvent: "Graduation Season" }, // Week 26
-    { name: "Independence Day Fireworks", description: "Fireworks show production", color: "#dc143c", icon: "🎆", realEvent: "4th of July" }, // Week 27
-    { name: "Summer Camp Adventures", description: "Youth camp management", color: "#32cd32", icon: "🏕️", realEvent: "Summer Camp Season" }, // Week 28
-    { name: "Car Passing", description: "Highway idle racing! Pass cars to earn points", color: "#ff4500", icon: "🚗", realEvent: "Summer Road Trips" }, // Week 29
-    { name: "State Fair Carnival", description: "County fair management", color: "#ffd700", icon: "🎡", realEvent: "State Fair Season" }, // Week 30
-    { name: "Olympic Games Glory", description: "International sports competition", color: "#ffd700", icon: "🥇", realEvent: "Summer Olympics (off-year)" }, // Week 31
-    { name: "Back to School Brawl", description: "High school social combat", color: "#ffd700", icon: "🎒", realEvent: "Back to School" }, // Week 32
-    { name: "Labor Day Weekend Rush", description: "Holiday travel management", color: "#4682b4", icon: "🛣️", realEvent: "Labor Day" }, // Week 33
-    { name: "Football Season Kickoff", description: "NFL team management", color: "#8b4513", icon: "🏈", realEvent: "NFL Season Begins" }, // Week 34
-    { name: "Harvest Moon Festival", description: "Autumn farming simulation", color: "#ff8c00", icon: "🌾", realEvent: "Harvest Season" }, // Week 35
-    { name: "Oktoberfest Brewery", description: "Beer festival management", color: "#daa520", icon: "🍺", realEvent: "Oktoberfest" }, // Week 36
-    { name: "Halloween Horror Empire", description: "Spooky entertainment business", color: "#ff8c00", icon: "🎃", realEvent: "Halloween Preparation" }, // Week 37
-    { name: "World Series Baseball", description: "Championship baseball management", color: "#ff4500", icon: "⚾", realEvent: "World Series" }, // Week 38
-    { name: "Thanksgiving Turkey Tycoon", description: "Holiday meal preparation", color: "#8b4513", icon: "🦃", realEvent: "Thanksgiving Prep" }, // Week 39
-    { name: "Black Friday Shopping Spree", description: "Retail empire management", color: "#000000", icon: "🛍️", realEvent: "Black Friday" }, // Week 40
-    { name: "Cyber Monday Tech Empire", description: "Online retail domination", color: "#0066cc", icon: "💻", realEvent: "Cyber Monday" }, // Week 41
-    { name: "Holiday Decoration Dynasty", description: "Christmas decoration business", color: "#dc143c", icon: "🎄", realEvent: "Holiday Season Begins" }, // Week 42
-    { name: "Winter Wonderland Workshop", description: "Holiday gift manufacturing", color: "#87ceeb", icon: "🎁", realEvent: "Holiday Shopping" }, // Week 43
-    { name: "Santa's Toy Factory", description: "Christmas production management", color: "#dc143c", icon: "🎅", realEvent: "Christmas Week" }, // Week 44
-    { name: "Trash Talk Rumble", description: "Competitive verbal combat", color: "#ff4500", icon: "💬", realEvent: "Anti-Bullying Week" }, // Week 45
-    { name: "Winter Storm Survival", description: "Emergency preparedness simulation", color: "#4682b4", icon: "🌨️", realEvent: "Winter Weather" }, // Week 46
-    { name: "Holiday Travel Chaos", description: "Airport and travel management", color: "#ff6347", icon: "✈️", realEvent: "Holiday Travel" }, // Week 47
-    { name: "New Year Resolution Gym", description: "Fitness center empire", color: "#32cd32", icon: "💪", realEvent: "New Year Prep" }, // Week 48
-    { name: "Winter Solstice Celebration", description: "Seasonal festival management", color: "#4b0082", icon: "🌟", realEvent: "Winter Solstice" }, // Week 49
-    { name: "Year-End Financial Empire", description: "Accounting and tax preparation", color: "#696969", icon: "📈", realEvent: "Year-End Business" }, // Week 50
-    { name: "Christmas Eve Magic", description: "Holiday miracle management", color: "#dc143c", icon: "🎄", realEvent: "Christmas Eve" }, // Week 51
-    { name: "New Year's Resolution Reset", description: "Goal-setting and achievement", color: "#ffd700", icon: "⭐", realEvent: "New Year's Eve" } // Week 52
+    { name: "Skatepark Royalty", description: "Skateboarding career simulation", color: "#ff6347", icon: "🛹" }, // Week 26 (next)
+    { name: "Beach Blitz", description: "Summer beach sports tournament", color: "#f0e68c", icon: "🏖️" },
+    { name: "Cult Crafter", description: "Dark strategy cult management", color: "#800080", icon: "🔮" },
+    { name: "Back to School Brawl", description: "High school social combat", color: "#ffd700", icon: "🎒" },
+    { name: "Artifact Dealer", description: "Ancient treasure trading", color: "#cd853f", icon: "🏺" },
+    { name: "Trash Talk Rumble", description: "Competitive verbal combat", color: "#ff4500", icon: "💬" },
+    { name: "Witch Market", description: "Magical marketplace trading", color: "#8a2be2", icon: "🧙‍♀️" },
+    { name: "Planetary Deliveries", description: "Interplanetary logistics", color: "#4682b4", icon: "🚀" },
+    { name: "Quantum Librarian", description: "Dimensional knowledge management", color: "#6495ed", icon: "📚" },
+    { name: "Deepfry Simulator", description: "Fast food cooking management", color: "#daa520", icon: "🍟" },
+    { name: "Carve Clash: Halloween", description: "Pumpkin carving competition", color: "#ff8c00", icon: "🎃" },
+    { name: "Influencer Island", description: "Social media reality show", color: "#ff69b4", icon: "📱" },
+    { name: "Ghost Realtor", description: "Supernatural property sales", color: "#9370db", icon: "👻" },
+    { name: "Prank Patrol", description: "Master prankster simulation", color: "#32cd32", icon: "😜" },
+    { name: "Crime Clickers", description: "Criminal empire building", color: "#8b0000", icon: "🔫" },
+    { name: "Chef Speedrun", description: "High-speed cooking challenges", color: "#ff6347", icon: "⏱️" },
+    { name: "Snowball Syndicate", description: "Winter warfare strategy", color: "#87ceeb", icon: "❄️" },
+    { name: "Santa's Toy Factory", description: "Christmas production management", color: "#dc143c", icon: "🎅" },
+    { name: "New Year's Eve Showdown", description: "Party planning competition", color: "#ffd700", icon: "🎉" },
+    { name: "Tiki Blitz", description: "Tropical match-3 paradise", color: "#ffd93d", icon: "🏝️" }, // Week 24 (last week)
+    { name: "Espresso Wars", description: "Coffee shop competition", color: "#8b4513", icon: "☕" },
+    { name: "Mascot Meltdown", description: "Sports mascot entertainment", color: "#ff6b6b", icon: "🏆" },
+    { name: "MechaForge", description: "Giant robot building combat", color: "#2f4f4f", icon: "🤖" },
+    { name: "Real Estate Rush", description: "Property investment empire", color: "#32cd32", icon: "🏠" },
+    { name: "City Hacker", description: "Cyberpunk hacking simulation", color: "#9370db", icon: "💻" },
+    { name: "Side Hustle Saga", description: "Gig economy management", color: "#4ecdc4", icon: "💰" },
+    { name: "MasterChef Royale", description: "Cooking competition battle royale", color: "#ff6b6b", icon: "👨‍🍳" },
+    { name: "Grow Wars: Winter Garden", description: "Strategic winter plant defense", color: "#4ecdc4", icon: "🌱" },
+    { name: "Cookie Clash: Cabin Clicker", description: "Cozy mountain cabin bakery", color: "#ffd93d", icon: "🍪" },
+    { name: "Pet Empire: Valentine Edition", description: "Romantic pet breeding empire", color: "#ff69b4", icon: "💕" },
+    { name: "Car Wash Kingdom", description: "Build your car wash empire", color: "#87ceeb", icon: "🚗" },
+    { name: "Alien Lab Escape", description: "Escape from alien laboratory", color: "#9370db", icon: "👽" },
+    { name: "Hustle City", description: "Street hustler to city mogul", color: "#ff8c00", icon: "🏙️" },
+    { name: "Dungeon Depths", description: "Roguelike dungeon crawler", color: "#8b4513", icon: "⚔️" },
+    { name: "Meme Lord Showdown", description: "Competitive meme creation", color: "#32cd32", icon: "😂" },
+    { name: "March Madness: Bracket Brawl", description: "Basketball tournament predictions", color: "#ff4500", icon: "🏀" },
+    { name: "Streamer Royale", description: "Build your streaming career", color: "#9932cc", icon: "📺" },
+    { name: "Bunny Run: Easter Sprint", description: "Easter bunny endless runner", color: "#ffb6c1", icon: "🐰" },
+    { name: "Dragon Rancher", description: "Fantasy dragon breeding ranch", color: "#dc143c", icon: "🐉" },
+    { name: "Gladiatorgram", description: "Ancient Rome social media", color: "#b8860b", icon: "⚔️" },
+    { name: "Spring Builders Fest", description: "Seasonal building competition", color: "#90ee90", icon: "🏗️" },
+    { name: "Car Passing", description: "Highway idle racing! Pass cars to earn points", color: "#ff4500", icon: "🚗" },
+    { name: "Biohack Blitz", description: "Genetic engineering puzzles", color: "#00ff7f", icon: "🧬" },
+    { name: "Prestige Reset", description: "Alpha Ascend progression system", color: "#9932cc", icon: "⭐" },
+    { name: "Cosmic Casino", description: "Space-themed gambling adventure", color: "#4b0082", icon: "🎰" },
+    { name: "Time Trader", description: "Temporal market manipulation", color: "#00ced1", icon: "⏰" },
+    { name: "Neon Nights", description: "Cyberpunk city management", color: "#ff1493", icon: "🌃" },
+    { name: "Mystic Mines", description: "Magical resource extraction", color: "#8b4513", icon: "⛏️" }
   ];
-
-  // Get current week game index (0-based)
-  const getCurrentWeekGameIndex = () => {
-    const currentWeek = getCurrentWeekOfYear();
-    return (currentWeek - 1) % 52; // Convert to 0-based index
-  };
-
-  // Timer countdown effect with persistent state
-  useEffect(() => {
-    // Initialize timer on component mount
-    setTimeLeft(getTimeUntilNextMonday());
-    
-    const timer = setInterval(() => {
-      const newTimeLeft = getTimeUntilNextMonday();
-      setTimeLeft(newTimeLeft);
-      
-      // Check if we've hit Monday 12:00 AM UTC (all values are 0 or very close)
-      if (newTimeLeft.days === 0 && newTimeLeft.hours === 0 && newTimeLeft.minutes === 0 && newTimeLeft.seconds <= 1) {
-        // Week has changed, force a re-render by updating the time
-        setTimeout(() => {
-          setTimeLeft(getTimeUntilNextMonday());
-        }, 2000);
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   // Permanent mini-games
   const miniGames = [
@@ -180,6 +155,36 @@ function App() {
     { name: "Wolverine", description: "Social deduction! Identify roles, eliminate enemies.", color: "#4b0082", icon: "🐺", rules: "Players are assigned secret roles. Wolverines hunt at night while villagers vote to eliminate suspects during the day. Use deduction and strategy to identify and eliminate the opposing team." },
     { name: "WordWeaver", description: "Fast-paced rhyming battle! 2 players. 10 vs 12 prompts.", color: "#ff1493", icon: "📝", rules: "Create rhyming words or phrases based on given prompts. Players take turns responding with rhymes. Points awarded for creativity and speed. Best rhymer after all prompts wins." }
   ];
+
+  // Timer countdown effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) {
+          return { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        } else if (prev.hours > 0) {
+          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        } else if (prev.days > 0) {
+          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
+        } else {
+          // Reset to next week
+          return { days: 6, hours: 23, minutes: 59, seconds: 59 };
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const scrollWeeklyGames = (direction) => {
+    if (direction === 'left' && currentWeeklyGame > 0) {
+      setCurrentWeeklyGame(currentWeeklyGame - 1);
+    } else if (direction === 'right' && currentWeeklyGame < weeklyGames.length - 7) {
+      setCurrentWeeklyGame(currentWeeklyGame + 1);
+    }
+  };
 
   const handleGameClick = (game) => {
     setSelectedGame({
@@ -278,29 +283,133 @@ function App() {
 
   const getIdleGameConfig = (gameName) => {
     const configs = {
-      "New Year's Eve Showdown": {
-        name: "New Year's Eve Showdown",
-        background: "linear-gradient(135deg, #ffd700 0%, #ff8c00 100%)",
-        icon: "🎉",
-        baseMultiplier: 2.0,
+      "Frog Derby": {
+        name: "Frog Derby",
+        background: "linear-gradient(135deg, #228b22 0%, #32cd32 100%)",
+        icon: "🐸",
+        baseMultiplier: 1.8,
         maxMultiplier: 15.0,
-        progressSpeed: 0.02
+        progressSpeed: 0.015
       },
-      "Winter Olympics Prep": {
-        name: "Winter Olympics Prep",
-        background: "linear-gradient(135deg, #87ceeb 0%, #4169e1 100%)",
-        icon: "⛷️",
+      "Summer Sports Rush": {
+        name: "Summer Sports Rush",
+        background: "linear-gradient(135deg, #ffa500 0%, #ff8c00 100%)",
+        icon: "🏅",
         baseMultiplier: 2.2,
         maxMultiplier: 18.0,
         progressSpeed: 0.018
       },
-      "Car Passing": {
-        name: "Car Passing",
-        background: "linear-gradient(135deg, #ff4500 0%, #ff6347 100%)",
-        icon: "🚗",
+      "DJ Beat Brawl": {
+        name: "DJ Beat Brawl",
+        background: "linear-gradient(135deg, #ff1493 0%, #9932cc 100%)",
+        icon: "🎧",
+        baseMultiplier: 2.8,
+        maxMultiplier: 25.0,
+        progressSpeed: 0.012
+      },
+      "Underwater Empire": {
+        name: "Underwater Empire",
+        background: "linear-gradient(135deg, #4169e1 0%, #00bfff 100%)",
+        icon: "🌊",
+        baseMultiplier: 2.1,
+        maxMultiplier: 16.0,
+        progressSpeed: 0.016
+      },
+      "Rocket Junkyard": {
+        name: "Rocket Junkyard",
+        background: "linear-gradient(135deg, #4169e1 0%, #1e90ff 100%)",
+        icon: "🚀",
         baseMultiplier: 2.5,
         maxMultiplier: 20.0,
+        progressSpeed: 0.01
+      },
+      "Skatepark Royalty": {
+        name: "Skatepark Royalty",
+        background: "linear-gradient(135deg, #ff6347 0%, #ff4500 100%)",
+        icon: "🛹",
+        baseMultiplier: 2.3,
+        maxMultiplier: 17.0,
+        progressSpeed: 0.014
+      },
+      "Beach Blitz": {
+        name: "Beach Blitz",
+        background: "linear-gradient(135deg, #f0e68c 0%, #ffd700 100%)",
+        icon: "🏖️",
+        baseMultiplier: 1.9,
+        maxMultiplier: 14.0,
+        progressSpeed: 0.017
+      },
+      "Cult Crafter": {
+        name: "Cult Crafter",
+        background: "linear-gradient(135deg, #800080 0%, #4b0082 100%)",
+        icon: "🔮",
+        baseMultiplier: 3.2,
+        maxMultiplier: 30.0,
+        progressSpeed: 0.008
+      },
+      "Tiki Blitz": {
+        name: "Tiki Blitz",
+        background: "linear-gradient(135deg, #ff6347 0%, #ffa500 100%)",
+        icon: "🏝️",
+        baseMultiplier: 2.0,
+        maxMultiplier: 12.0,
+        progressSpeed: 0.02
+      },
+      "Pet Empire Valentine Edition": {
+        name: "Pet Empire Valentine Edition",
+        background: "linear-gradient(135deg, #ff69b4 0%, #ff1493 100%)",
+        icon: "💕",
+        baseMultiplier: 1.6,
+        maxMultiplier: 10.0,
+        progressSpeed: 0.025
+      },
+      "Espresso Wars": {
+        name: "Espresso Wars",
+        background: "linear-gradient(135deg, #8b4513 0%, #a0522d 100%)",
+        icon: "☕",
+        baseMultiplier: 1.7,
+        maxMultiplier: 11.0,
+        progressSpeed: 0.022
+      },
+      "Mascot Meltdown": {
+        name: "Mascot Meltdown",
+        background: "linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%)",
+        icon: "🏆",
+        baseMultiplier: 2.4,
+        maxMultiplier: 19.0,
+        progressSpeed: 0.013
+      },
+      "MechaForge": {
+        name: "MechaForge",
+        background: "linear-gradient(135deg, #2f4f4f 0%, #708090 100%)",
+        icon: "🤖",
+        baseMultiplier: 2.7,
+        maxMultiplier: 22.0,
+        progressSpeed: 0.011
+      },
+      "Real Estate Rush": {
+        name: "Real Estate Rush",
+        background: "linear-gradient(135deg, #32cd32 0%, #228b22 100%)",
+        icon: "🏠",
+        baseMultiplier: 2.0,
+        maxMultiplier: 15.0,
         progressSpeed: 0.015
+      },
+      "City Hacker": {
+        name: "City Hacker",
+        background: "linear-gradient(135deg, #9370db 0%, #8a2be2 100%)",
+        icon: "💻",
+        baseMultiplier: 2.6,
+        maxMultiplier: 21.0,
+        progressSpeed: 0.012
+      },
+      "Side Hustle Saga": {
+        name: "Side Hustle Saga",
+        background: "linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)",
+        icon: "💰",
+        baseMultiplier: 1.8,
+        maxMultiplier: 13.0,
+        progressSpeed: 0.019
       }
     };
     
@@ -319,21 +428,11 @@ function App() {
   };
 
   const getCurrentWeekNumber = () => {
-    return getCurrentWeekOfYear();
+    return ((currentWeeklyGame + 1) % 52) || 52;
   };
 
   const getNextWeekNumber = () => {
-    return (getCurrentWeekOfYear() % 52) + 1;
-  };
-
-  const getCurrentWeekGame = () => {
-    const currentIndex = getCurrentWeekGameIndex();
-    return weeklyGames[currentIndex];
-  };
-
-  const getNextWeekGame = () => {
-    const nextIndex = (getCurrentWeekGameIndex() + 1) % 52;
-    return weeklyGames[nextIndex];
+    return ((currentWeeklyGame + 2) % 52) || 52;
   };
 
   return (
@@ -356,18 +455,17 @@ function App() {
         <section className="big-grind-section">
           <div className="big-grind-header">
             <h2>THE BIG GRIND: 52-WEEK COMPETITIVE GAMBLING GAME ROTATION ⭐</h2>
-            <p>🟢 Current Week {getCurrentWeekNumber()} & Full Rotation Below! 🟢</p>
+            <p>🟢 Current Week {getCurrentWeekNumber()} (June 30 - July 06, 2025) & Full Rotation Below! 🟢</p>
           </div>
 
           <div className="current-week-games">
             <div className="current-week">
-              <h3>🏆 CURRENT WEEK {getCurrentWeekNumber()} 🏆</h3>
+              <h3>🏆 CURRENT WEEK {getCurrentWeekNumber()} (June 30 - July 06, 2025) 🏆</h3>
               <div className="featured-game current-game">
-                <div className="game-icon">{getCurrentWeekGame().icon}</div>
+                <div className="game-icon">{weeklyGames[4].icon}</div>
                 <div className="game-info">
-                  <h4>{getCurrentWeekGame().name}</h4>
-                  <p>{getCurrentWeekGame().description}</p>
-                  <p className="real-event">🌟 {getCurrentWeekGame().realEvent}</p>
+                  <h4>{weeklyGames[4].name}</h4>
+                  <p>{weeklyGames[4].description}</p>
                   <p className="game-timer">
                     Ends in: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                   </p>
@@ -375,14 +473,13 @@ function App() {
               </div>
             </div>
 
-            <div className="next-week">
-              <h3>🔮 NEXT WEEK {getNextWeekNumber()} 🔮</h3>
-              <div className="featured-game next-game">
-                <div className="game-icon">{getNextWeekGame().icon}</div>
+            <div className="game-of-day">
+              <h3>🎮 Game of the Day 🎮</h3>
+              <div className="featured-game daily-game">
+                <div className="game-icon">🐍</div>
                 <div className="game-info">
-                  <h4>{getNextWeekGame().name}</h4>
-                  <p>{getNextWeekGame().description}</p>
-                  <p className="real-event">🌟 {getNextWeekGame().realEvent}</p>
+                  <h4>Pixel Python Arena</h4>
+                  <p>Full-screen snake battle! WASD/Click controls.</p>
                 </div>
               </div>
             </div>
@@ -395,25 +492,22 @@ function App() {
 
         {/* Weekly Grind Rotation */}
         <section className="weekly-rotation">
-          <h3>Weekly Grind Rotation (All 52 Weeks)</h3>
+          <h3>Weekly Grind Rotation (Upcoming & Past)</h3>
           <div className="games-scroll-container">
             <div className="games-grid-wrapper">
               <div className="games-grid weekly-games">
                 {weeklyGames.map((game, index) => {
-                  const weekNumber = index + 1;
-                  const isCurrent = index === getCurrentWeekGameIndex();
+                  const weekNumber = ((index + 1) % 52) || 52;
                   return (
                     <div 
                       key={index} 
-                      className={`game-card weekly-card ${isCurrent ? 'current-week-highlight' : ''}`}
+                      className="game-card weekly-card" 
                       style={{backgroundColor: game.color}}
                     >
                       <div className="game-icon">{game.icon}</div>
                       <h4>{game.name}</h4>
                       <p>{game.description}</p>
                       <div className="week-number">Week {weekNumber}</div>
-                      <div className="real-event">{game.realEvent}</div>
-                      {isCurrent && <div className="current-badge">CURRENT</div>}
                       <button className="play-btn" onClick={() => handleGameClick(game)}>Play Now</button>
                     </div>
                   );
