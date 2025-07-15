@@ -25,6 +25,7 @@ import HeaderHustle from './games/HeaderHustle';
 import MiniHoops from './games/MiniHoops';
 import OneInAMillion from './games/OneInAMillion';
 import CarPassing from './games/CarPassing';
+import PlatformJump from './games/PlatformJump';
 import IdleGameEngine from './components/IdleGameEngine';
 import LobbySystem from './components/LobbySystem';
 
@@ -170,8 +171,8 @@ function App() {
     { name: "Memory Match", description: "Test your memory skills!", color: "#00ff7f", icon: "🧠", rules: "Flip cards to find matching pairs. Remember the positions of cards you've seen. Match all pairs with the fewest moves to achieve the highest score." },
     { name: "Mini Basketball", description: "Shoot some hoops! Simple physics, based scoring.", color: "#ff4500", icon: "🏀", rules: "Aim and shoot basketballs into the hoop. Adjust angle and power for perfect shots. Score as many baskets as possible within the time limit." },
     { name: "One in a Million", description: "Competitive Where's Waldo! 2-player. 10 rounds each.", color: "#daa520", icon: "🔍", rules: "Find the hidden character in crowded scenes faster than your opponent. Each round presents a new challenge. The player who finds the most characters wins." },
+    { name: "Platform Jump", description: "4-player ledge jumping! Push others off to win!", color: "#32cd32", icon: "🏔️", rules: "Jump between ledges and try to be the last one standing! Push and pull other players to knock them off. Collect coins for extra points. Game gets harder over time with disappearing platforms and hazards. Last player alive or highest score after 120 seconds wins!" },
     { name: "Pixel Python Arena", description: "Full-screen snake battle! WASD/Click controls.", color: "#32cd32", icon: "🐍", rules: "Control your snake using WASD keys or mouse clicks. Eat food to grow longer while avoiding walls and other snakes. Last snake surviving wins the arena battle." },
-    { name: "Platform Jump", description: "Jump to the top!", color: "#90ee90", icon: "⬆️", rules: "Jump from platform to platform to reach the top. Time your jumps carefully to avoid falling. Collect power-ups and avoid obstacles on your way up." },
     { name: "QuizKnows", description: "Competitive trivia! 5-12 players. Fast answers win.", color: "#9932cc", icon: "💡", rules: "Answer trivia questions faster than other players. Correct answers earn points, with bonus points for speed. The player with the most points after all questions wins." },
     { name: "Sea Squares", description: "Match-3 puzzle with betting & competitive themes. 7x7...", color: "#4169e1", icon: "🌊", rules: "Match 3 or more sea creatures in rows or columns on a 7x7 grid. Create combos for higher scores. Place bets on your performance before each round." },
     { name: "Snakes n Ladders - Gamble", description: "Classic board game with betting. 2-6 players.", color: "#228b22", icon: "🎲", rules: "Roll dice to move around the board. Climb ladders to advance quickly, but avoid snakes that send you backward. Place bets on who will reach the finish first." },
@@ -267,6 +268,9 @@ function App() {
         break;
       case 'One in a Million':
         setCurrentGame('OneInAMillion');
+        break;
+      case 'Platform Jump':
+        setCurrentGame('PlatformJump');
         break;
       case 'Car Passing':
         setCurrentGame('CarPassing');
@@ -593,6 +597,7 @@ function App() {
       {currentGame === 'HeaderHustle' && <HeaderHustle onClose={() => setCurrentGame(null)} />}
       {currentGame === 'MiniHoops' && <MiniHoops onClose={() => setCurrentGame(null)} />}
       {currentGame === 'OneInAMillion' && <OneInAMillion onClose={() => setCurrentGame(null)} />}
+      {currentGame === 'PlatformJump' && <PlatformJump onClose={() => setCurrentGame(null)} />}
       {currentGame === 'CarPassing' && <CarPassing onClose={() => setCurrentGame(null)} />}
       
       {/* Cosmic Jackpot */}

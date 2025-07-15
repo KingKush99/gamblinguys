@@ -1,0 +1,219 @@
+.platform-jump-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.platform-jump-rules {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.platform-jump-rules h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.platform-jump-rules h3 {
+  color: #FFD700;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.rules-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rules-content li {
+  margin: 8px 0;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  border-left: 4px solid #FFD700;
+}
+
+.start-game-btn {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 20px 10px 10px 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.start-game-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.platform-jump-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+.platform-jump-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.platform-jump-header h2 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.platform-jump-canvas {
+  border: 2px solid #333;
+  background: #87CEEB;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.close-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #cc3333;
+  transform: scale(1.05);
+}
+
+.game-over-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+}
+
+.game-over-content h2 {
+  margin-bottom: 20px;
+  font-size: 2.2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-over-content h3 {
+  color: #FFD700;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.final-scores {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.final-scores h4 {
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.score-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.game-over-content button {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.game-over-content button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.game-over-content button:last-child {
+  background: linear-gradient(45deg, #ff4444, #cc3333);
+}
+
+.game-over-content button:last-child:hover {
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .platform-jump-canvas {
+    width: 95vw;
+    height: auto;
+  }
+  
+  .platform-jump-rules {
+    margin: 10px;
+    padding: 20px;
+    max-width: 90vw;
+  }
+  
+  .game-over-content {
+    margin: 10px;
+    padding: 20px;
+    max-width: 90vw;
+  }
+}
+
