@@ -811,29 +811,7 @@ const PlatformJump = ({ onClose }) => {
     }
   };
 
-  const endGame = () => {
-    gameStateRef.current.gameEnded = true;
-    
-    // Determine winner
-    const alivePlayers = gameStateRef.current.players.filter(p => p.alive);
-    if (alivePlayers.length === 1) {
-      gameStateRef.current.winner = alivePlayers[0];
-    } else {
-      // Find highest score
-      let highestScore = -1;
-      let winner = null;
-      gameStateRef.current.players.forEach(player => {
-        const score = gameStateRef.current.scores[player.id].totalScore;
-        if (score > highestScore) {
-          highestScore = score;
-          winner = player;
-        }
-      });
-      gameStateRef.current.winner = winner;
-    }
-    
-    setGameState({ ...gameStateRef.current });
-  };
+
 
   const handleKeyPress = (e) => {
     if (!gameStateRef.current.gameStarted || gameStateRef.current.gameEnded) return;
